@@ -7,25 +7,25 @@ import javax.persistence.Embeddable;
 public class Person {
 
     @Column
-    private String firstNamel;
+    private String firstName;
 
     @Column
     private String lastName;
 
-    public Person(String firstNamel, String lastName) {
-        this.firstNamel = firstNamel;
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
         this.lastName = lastName;
     }
 
     protected Person() {
     }
 
-    public String getFirstNamel() {
-        return firstNamel;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstNamel(String firstNamel) {
-        this.firstNamel = firstNamel;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -39,7 +39,7 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-               "firstNamel='" + firstNamel + '\'' +
+               "firstName='" + firstName + '\'' +
                ", lastName='" + lastName + '\'' +
                '}';
     }

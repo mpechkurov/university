@@ -23,7 +23,7 @@ class CrudRepositoryDemoTest {
         studentRepository.save(new Student(new Person("jane", "doe"), fullTime, 20));
         studentRepository.save(new Student(new Person("john", "doe"), fullTime, 22));
         studentRepository.save(new Student(new Person("mike", "smith"), fullTime, 18));
-        studentRepository.save(new Student(new Person("ally", "kim"), fullTime, 19));
+        studentRepository.save(new Student(new Person("ally", "kim"), !fullTime, 19));
 
         System.out.println("Original students");
         studentRepository.findAll().forEach(System.out::println);
