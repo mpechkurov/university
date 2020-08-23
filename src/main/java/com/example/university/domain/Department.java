@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,13 +24,17 @@ public class Department {
     @Column
     private String name;
 
+    @OneToOne
+    private Staff chair;
+
     @OneToMany(mappedBy = "department",
                fetch = FetchType.EAGER,
                cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<>();
 
-    public Department(String name) {
+    public Department(String name, Staff chair) {
         this.name = name;
+        this.chair = chair;
     }
 
     protected Department() {

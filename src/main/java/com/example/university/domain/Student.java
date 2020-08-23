@@ -3,6 +3,7 @@ package com.example.university.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -29,7 +30,8 @@ public class Student {
     @Embedded
     private Person attendee;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER,
+               cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<>();
 
     public Student(Person attendee, boolean fullTime, Integer age) {
