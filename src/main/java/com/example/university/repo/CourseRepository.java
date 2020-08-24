@@ -1,6 +1,7 @@
 package com.example.university.repo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +14,7 @@ import com.example.university.view.CourseView;
 
 public interface CourseRepository extends CrudRepository<Course, Integer> {
 
-    Course findByName(String name);
+    Optional<Course> findByName(String name);
 
     List<Course> findByDepartmentChairMemberLastName(String chair);
 
@@ -32,12 +33,9 @@ public interface CourseRepository extends CrudRepository<Course, Integer> {
     Page<Course> findByCredits(@Param("credits") int credits, Pageable pageable);
 
 
-    //      Common Querying Mistake
-    //      Uncomment to Debug.
-    //
-    //    Course findByDeptName(String deptName);
-    //
-    //    @Query("Select new com.example.university.view.CourseView" +
-    //            "(c.name, c.instructor.member.lastName, c.department.name) from course c where c.name=?1")
-    //    Course getCourseViewByName(String name);
+    Course findByDepartmentName(String deptName);
+
+    @Query("Select new com.example.university.view.CourseView" +
+           "(c.name, c.instructor.member.lastName, c.department.name) from Course c where c.name=?1")
+    Optional<CourseView> getCourseViewByName(String name);
 }
